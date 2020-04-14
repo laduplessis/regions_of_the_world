@@ -1,0 +1,127 @@
+---
+title: "Regions of the World (from GADM 3.6)"
+author: "_Louis du Plessis_"
+date: '_`r format(Sys.time(), "Last modified: %d %b %Y")`_'
+output: github_document
+layout: page
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+
+```{r setup, include=FALSE}
+  
+    library(rgdal)
+
+    knitr::opts_chunk$set(tidy=FALSE, cache=FALSE, 
+                          message=FALSE, error=FALSE, warning=FALSE, echo=FALSE)
+    
+    path <- "data/"
+    gadm <- "gadm36_levels_shp"
+    
+```
+
+
+## Admin 0
+
+```{r world_0, results='asis'}
+
+    cat("\nExtracting admin0 regions...\n\n")
+
+    world_0 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_0", verbose = FALSE)
+    admin_0 <- data.frame(GID_0=world_0$GID_0, NAME_0=world_0$NAME_0)
+    
+    write.csv(world_0, paste0(path, "world_0.csv"), row.names=FALSE)
+    write.csv(admin_0, paste0(path, "admin_0.csv"), row.names=FALSE)
+    
+    cat(paste0(length(world_0), " admin0 regions successfully extracted.\n\n"))
+    
+    rm(world_0, admin_0)
+    
+```
+
+## Admin 1
+
+```{r world_1, results='asis'}
+
+    cat("\nExtracting admin1 regions...\n\n")
+
+    world_1 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_1", verbose = FALSE)
+    admin_1 <- data.frame(GID_0  = world_1$GID_0, 
+                          GID_1  = world_1$GID_1,
+                          NAME_0 = world_1$NAME_0, 
+                          NAME_1 = world_1$NAME_1,
+                          TYPE_1 = world_1$TYPE_1, 
+                          ENGTYPE_1 = world_1$ENGTYPE_1)
+    
+    write.csv(world_1, paste0(path, "world_1.csv"), row.names=FALSE)
+    write.csv(admin_1, paste0(path, "admin_1.csv"), row.names=FALSE)
+    
+    cat(paste0(length(levels(world_1$NAME_0)), " admin0 and ", length(levels(world_1$NAME_1)), " admin1 regions successfully extracted.\n\n"))
+    
+    rm(world_1, admin_1)
+    
+```
+
+
+## Admin 2
+
+```{r world_2, results='asis'}
+
+    cat("\nExtracting admin1 regions...\n\n")
+
+    world_2 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_2", verbose = FALSE)
+    admin_2 <- data.frame(GID_0  = world_2$GID_0, 
+                          GID_1  = world_2$GID_1,
+                          GID_2  = world_2$GID_2,
+                          NAME_0 = world_2$NAME_0, 
+                          NAME_1 = world_2$NAME_1,
+                          NAME_2 = world_2$NAME_2,
+                          TYPE_2 = world_2$TYPE_2, 
+                          ENGTYPE_2 = world_2$ENGTYPE_2)
+    
+    write.csv(world_2, paste0(path, "world_2.csv"), row.names=FALSE)
+    write.csv(admin_2, paste0(path, "admin_2.csv"), row.names=FALSE)
+    
+    cat(paste0(length(levels(world_2$NAME_0)), " admin0, ", length(levels(world_2$NAME_1)), " admin1 and ", length(levels(world_2$NAME_2)), " admin2 regions successfully extracted.\n\n"))
+    
+    rm(world_2, admin_2)
+    
+```
+
+
+## Admin 3
+
+```{r world_3, results='asis'}
+
+    cat("\nExtracting admin1 regions...\n\n")
+
+    world_3 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_2", verbose = FALSE)
+    admin_2 <- data.frame(GID_0  = world_3$GID_0, 
+                          GID_1  = world_3$GID_1,
+                          GID_2  = world_3$GID_2,
+                          GID_3  = world_3$GID_3,
+                          NAME_0 = world_3$NAME_0, 
+                          NAME_1 = world_3$NAME_1,
+                          NAME_2 = world_3$NAME_2,
+                          NAME_3 = world_3$NAME_3,
+                          TYPE_3 = world_3$TYPE_3, 
+                          ENGTYPE_3 = world_3$ENGTYPE_3)
+    
+    write.csv(world_3, paste0(path, "world_3.csv"), row.names=FALSE)
+    write.csv(admin_3, paste0(path, "admin_3.csv"), row.names=FALSE)
+    
+    cat(paste0(length(levels(world_3$NAME_0)), " admin0, ", length(levels(world_3$NAME_1)), " admin1,  ", length(levels(world_3$NAME_2)), " admin2 and ", length(levels(world_3$NAME_3)), " regions successfully extracted.\n\n"))
+    
+    rm(world_3, admin_3)
+    
+```
+
+
+
+## Session info
+
+```{r sessionInfo, results='markup'}
+    sessionInfo()
+```
