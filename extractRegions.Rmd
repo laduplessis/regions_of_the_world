@@ -1,5 +1,5 @@
 ---
-title: "Regions of the World (from GADM 3.6)"
+title: "Regions of the World"
 author: "_Louis du Plessis_"
 date: '_`r format(Sys.time(), "Last modified: %d %b %Y")`_'
 output: github_document
@@ -8,6 +8,21 @@ editor_options:
   chunk_output_type: inline
 ---
 
+This is a list of admin regions of the world, for easy reference and automatic parsing of epidemiological and genetic data. 
+
+The data were extracted from the [GADM v3.6 database](https://gadm.org/data.html)
+
+The list includes the following divisions:
+- admin0: Country level
+- admin1: Province/state/region level
+- admin2: County/prefecture/district level
+- admin3: ...
+- admin4: ...
+- admin5: ...
+
+Note that higher-level divisions are only present for some countries. 
+
+The outputs are stored in `data/admin_*.csv`. The script also produces `data/world_*.csv` files (not on the Github repository) that are direct csv dumps from the shape files (contain a few extra fields). 
 
 
 ```{r setup, include=FALSE}
@@ -58,7 +73,7 @@ editor_options:
     write.csv(world_1, paste0(path, "world_1.csv"), row.names=FALSE)
     write.csv(admin_1, paste0(path, "admin_1.csv"), row.names=FALSE)
     
-    cat(paste0(length(levels(world_1$NAME_0)), " admin0 and ", length(levels(world_1$NAME_1)), " admin1 regions successfully extracted.\n\n"))
+    cat(paste0(length(levels(world_1$NAME_1)), " admin1 regions extracted from ", length(levels(world_1$NAME_0)), " admin0 regions.\n\n"))
     
     rm(world_1, admin_1)
     
@@ -69,7 +84,7 @@ editor_options:
 
 ```{r world_2, results='asis'}
 
-    cat("\nExtracting admin1 regions...\n\n")
+    cat("\nExtracting admin2 regions...\n\n")
 
     world_2 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_2", verbose = FALSE)
     admin_2 <- data.frame(GID_0  = world_2$GID_0, 
@@ -84,7 +99,7 @@ editor_options:
     write.csv(world_2, paste0(path, "world_2.csv"), row.names=FALSE)
     write.csv(admin_2, paste0(path, "admin_2.csv"), row.names=FALSE)
     
-    cat(paste0(length(levels(world_2$NAME_0)), " admin0, ", length(levels(world_2$NAME_1)), " admin1 and ", length(levels(world_2$NAME_2)), " admin2 regions successfully extracted.\n\n"))
+    cat(paste0(length(levels(world_2$NAME_2)), " admin2 regions extracted from ", length(levels(world_2$NAME_1)), " admin1 and ", length(levels(world_2$NAME_0)), " admin0 regions.\n\n"))
     
     rm(world_2, admin_2)
     
@@ -95,10 +110,10 @@ editor_options:
 
 ```{r world_3, results='asis'}
 
-    cat("\nExtracting admin1 regions...\n\n")
+    cat("\nExtracting admin3 regions...\n\n")
 
-    world_3 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_2", verbose = FALSE)
-    admin_2 <- data.frame(GID_0  = world_3$GID_0, 
+    world_3 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_3", verbose = FALSE)
+    admin_3 <- data.frame(GID_0  = world_3$GID_0, 
                           GID_1  = world_3$GID_1,
                           GID_2  = world_3$GID_2,
                           GID_3  = world_3$GID_3,
@@ -112,9 +127,71 @@ editor_options:
     write.csv(world_3, paste0(path, "world_3.csv"), row.names=FALSE)
     write.csv(admin_3, paste0(path, "admin_3.csv"), row.names=FALSE)
     
-    cat(paste0(length(levels(world_3$NAME_0)), " admin0, ", length(levels(world_3$NAME_1)), " admin1,  ", length(levels(world_3$NAME_2)), " admin2 and ", length(levels(world_3$NAME_3)), " regions successfully extracted.\n\n"))
+    cat(paste0(length(levels(world_3$NAME_3)), " admin3 regions extracted from ", length(levels(world_3$NAME_2)), " admin2, ", length(levels(world_3$NAME_1)), " admin1 and ", length(levels(world_3$NAME_0)), " admin0 regions.\n\n"))
+
     
     rm(world_3, admin_3)
+    
+```
+
+## Admin 4
+
+```{r world_4, results='asis'}
+
+    cat("\nExtracting admin4 regions...\n\n")
+
+    world_4 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_4", verbose = FALSE)
+    admin_4 <- data.frame(GID_0  = world_4$GID_0, 
+                          GID_1  = world_4$GID_1,
+                          GID_2  = world_4$GID_2,
+                          GID_3  = world_4$GID_3,
+                          GID_4  = world_4$GID_4,
+                          NAME_0 = world_4$NAME_0, 
+                          NAME_1 = world_4$NAME_1,
+                          NAME_2 = world_4$NAME_2,
+                          NAME_3 = world_4$NAME_3,
+                          NAME_4 = world_4$NAME_4,
+                          TYPE_4 = world_4$TYPE_4, 
+                          ENGTYPE_4 = world_4$ENGTYPE_4)
+    
+    write.csv(world_4, paste0(path, "world_4.csv"), row.names=FALSE)
+    write.csv(admin_4, paste0(path, "admin_4.csv"), row.names=FALSE)
+    
+    cat(paste0(length(levels(world_4$NAME_4)), " admin4 regions extracted from ", length(levels(world_4$NAME_3)), " admin3,  ", length(levels(world_4$NAME_2)), " admin2, ", length(levels(world_4$NAME_1)), " admin1 and ", length(levels(world_4$NAME_0)), " admin0 regions.\n\n"))
+
+    rm(world_4, admin_4)
+    
+```
+
+## Admin 5
+
+```{r world_5, results='asis'}
+
+    cat("\nExtracting admin4 regions...\n\n")
+
+    world_5 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_5", verbose = FALSE)
+    admin_5 <- data.frame(GID_0  = world_5$GID_0, 
+                          GID_1  = world_5$GID_1,
+                          GID_2  = world_5$GID_2,
+                          GID_3  = world_5$GID_3,
+                          GID_4  = world_5$GID_4,
+                          GID_4  = world_5$GID_4,
+                          NAME_0 = world_5$NAME_0, 
+                          NAME_1 = world_5$NAME_1,
+                          NAME_2 = world_5$NAME_2,
+                          NAME_3 = world_5$NAME_3,
+                          NAME_4 = world_5$NAME_4,
+                          NAME_5 = world_5$NAME_5,
+                          TYPE_5 = world_5$TYPE_5, 
+                          ENGTYPE_5 = world_5$ENGTYPE_5)
+    
+    write.csv(world_5, paste0(path, "world_5.csv"), row.names=FALSE)
+    write.csv(admin_5, paste0(path, "admin_5.csv"), row.names=FALSE)
+    
+    cat(paste0(length(levels(world_5$NAME_5)), " admin5 regions extracted from ", length(levels(world_5$NAME_4)), " admin4, ", length(levels(world_5$NAME_3)), " admin3,  ", length(levels(world_5$NAME_2)), " admin2, ", length(levels(world_5$NAME_1)), " admin1 and ", length(levels(world_5$NAME_0)), " admin0 regions.\n\n"))
+
+    
+    rm(world_5, admin_5)
     
 ```
 

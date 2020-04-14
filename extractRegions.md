@@ -1,31 +1,62 @@
-Regions of the World (from GADM 3.6)
+Regions of the World
 ================
 *Louis du Plessis*
 *Last modified: 14 Apr 2020*
 
+This is a list of admin regions of the world, for easy reference and automatic parsing of epidemiological and genetic data.
+
+The data were extracted from the [GADM v3.6 database](https://gadm.org/data.html)
+
+The list includes the following divisions: - admin0: Country level - admin1: Province/state/region level - admin2: County/prefecture/district level - admin3: ... - admin4: ... - admin5: ...
+
+Note that higher-level divisions are only present for some countries.
+
+The outputs are stored in `data/admin_*.csv`. The script also produces `data/world_*.csv` files (not on the Github repository) that are direct csv dumps from the shape files (contain a few extra fields).
+
 Admin 0
-=======
+-------
 
 Extracting admin0 regions...
 
 256 admin0 regions successfully extracted.
 
 Admin 1
-=======
+-------
 
 Extracting admin1 regions...
 
-228 admin0 and 3486 admin1 regions successfully extracted.
+3486 admin1 regions extracted from 228 admin0 regions.
 
 Admin 2
-=======
+-------
 
-Extracting admin1 regions...
+Extracting admin2 regions...
 
-166 admin0, 2751 admin1 and 41533 admin2 regions successfully extracted.
+41533 admin2 regions extracted from 2751 admin1 and 166 admin0 regions.
+
+Admin 3
+-------
+
+Extracting admin3 regions...
+
+115437 admin3 regions extracted from 17701 admin2, 1216 admin1 and 65 admin0 regions.
+
+Admin 4
+-------
+
+Extracting admin4 regions...
+
+105470 admin4 regions extracted from 18219 admin3, 1965 admin2, 285 admin1 and 20 admin0 regions.
+
+Admin 5
+-------
+
+Extracting admin4 regions...
+
+40683 admin5 regions extracted from 5196 admin4, 731 admin3, 126 admin2, 18 admin1 and 2 admin0 regions.
 
 Session info
-============
+------------
 
     ## R version 3.5.1 (2018-07-02)
     ## Platform: x86_64-apple-darwin15.6.0 (64-bit)
