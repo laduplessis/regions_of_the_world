@@ -23,18 +23,24 @@ The list includes the following divisions:
 
 Note that higher-level divisions are only present for some countries. 
 
-The outputs are stored in `data/admin_*.csv`. The script also produces `data/world_*.csv` files (not on the Github repository) that are direct csv dumps from the shape files (contain a few extra fields). 
+The outputs are stored in `data/admin_*.csv` and `data/admin_*_ascii.csv` (no diacritics). The script also produces `data/world_*.csv` files (not on the Github repository) that are direct csv dumps from the shape files (contain a few extra fields). 
 
 
 ```{r setup, include=FALSE}
   
     library(rgdal)
+    library(stringi)
 
     knitr::opts_chunk$set(tidy=FALSE, cache=FALSE, 
                           message=FALSE, error=FALSE, warning=FALSE, echo=FALSE)
     
     path <- "data/"
     gadm <- "gadm36_levels_shp"
+    
+    
+    toASCII <- function(df) {
+        return(apply(df, 2, stri_trans_general, id="Latin-ASCII"))
+    }
     
 ```
 
@@ -48,8 +54,9 @@ The outputs are stored in `data/admin_*.csv`. The script also produces `data/wor
     world_0 <- rgdal::readOGR(dsn=paste0(path, "/", gadm, "/"), layer="gadm36_0", verbose = FALSE)
     admin_0 <- data.frame(GID_0=world_0$GID_0, NAME_0=world_0$NAME_0)
     
-    write.csv(world_0, paste0(path, "world_0.csv"), row.names=FALSE)
-    write.csv(admin_0, paste0(path, "admin_0.csv"), row.names=FALSE)
+    write.csv(world_0, paste0(path, "world_0.csv"), row.names=FALSE, na="")
+    write.csv(admin_0, paste0(path, "admin_0.csv"), row.names=FALSE, na="")
+    write.csv(toASCII(admin_0), paste0(path, "admin_0_ascii.csv"), row.names=FALSE, na="")
     
     cat(paste0(length(world_0), " admin0 regions successfully extracted.\n\n"))
     
@@ -71,8 +78,10 @@ The outputs are stored in `data/admin_*.csv`. The script also produces `data/wor
                           TYPE_1 = world_1$TYPE_1, 
                           ENGTYPE_1 = world_1$ENGTYPE_1)
     
-    write.csv(world_1, paste0(path, "world_1.csv"), row.names=FALSE)
-    write.csv(admin_1, paste0(path, "admin_1.csv"), row.names=FALSE)
+    write.csv(world_1, paste0(path, "world_1.csv"), row.names=FALSE, na="")
+    write.csv(admin_1, paste0(path, "admin_1.csv"), row.names=FALSE, na="")
+    write.csv(toASCII(admin_1), paste0(path, "admin_1_ascii.csv"), row.names=FALSE, na="")
+
     
     cat(paste0(length(levels(world_1$NAME_1)), " admin1 regions extracted from ", length(levels(world_1$NAME_0)), " admin0 regions.\n\n"))
     
@@ -97,8 +106,10 @@ The outputs are stored in `data/admin_*.csv`. The script also produces `data/wor
                           TYPE_2 = world_2$TYPE_2, 
                           ENGTYPE_2 = world_2$ENGTYPE_2)
     
-    write.csv(world_2, paste0(path, "world_2.csv"), row.names=FALSE)
-    write.csv(admin_2, paste0(path, "admin_2.csv"), row.names=FALSE)
+    write.csv(world_2, paste0(path, "world_2.csv"), row.names=FALSE, na="")
+    write.csv(admin_2, paste0(path, "admin_2.csv"), row.names=FALSE, na="")
+    write.csv(toASCII(admin_2), paste0(path, "admin_2_ascii.csv"), row.names=FALSE, na="")
+
     
     cat(paste0(length(levels(world_2$NAME_2)), " admin2 regions extracted from ", length(levels(world_2$NAME_1)), " admin1 and ", length(levels(world_2$NAME_0)), " admin0 regions.\n\n"))
     
@@ -125,8 +136,10 @@ The outputs are stored in `data/admin_*.csv`. The script also produces `data/wor
                           TYPE_3 = world_3$TYPE_3, 
                           ENGTYPE_3 = world_3$ENGTYPE_3)
     
-    write.csv(world_3, paste0(path, "world_3.csv"), row.names=FALSE)
-    write.csv(admin_3, paste0(path, "admin_3.csv"), row.names=FALSE)
+    write.csv(world_3, paste0(path, "world_3.csv"), row.names=FALSE, na="")
+    write.csv(admin_3, paste0(path, "admin_3.csv"), row.names=FALSE, na="")
+    write.csv(toASCII(admin_3), paste0(path, "admin_3_ascii.csv"), row.names=FALSE, na="")
+
     
     cat(paste0(length(levels(world_3$NAME_3)), " admin3 regions extracted from ", length(levels(world_3$NAME_2)), " admin2, ", length(levels(world_3$NAME_1)), " admin1 and ", length(levels(world_3$NAME_0)), " admin0 regions.\n\n"))
 
@@ -155,8 +168,10 @@ The outputs are stored in `data/admin_*.csv`. The script also produces `data/wor
                           TYPE_4 = world_4$TYPE_4, 
                           ENGTYPE_4 = world_4$ENGTYPE_4)
     
-    write.csv(world_4, paste0(path, "world_4.csv"), row.names=FALSE)
-    write.csv(admin_4, paste0(path, "admin_4.csv"), row.names=FALSE)
+    write.csv(world_4, paste0(path, "world_4.csv"), row.names=FALSE, na="")
+    write.csv(admin_4, paste0(path, "admin_4.csv"), row.names=FALSE, na="")
+    write.csv(toASCII(admin_4), paste0(path, "admin_4_ascii.csv"), row.names=FALSE, na="")
+
     
     cat(paste0(length(levels(world_4$NAME_4)), " admin4 regions extracted from ", length(levels(world_4$NAME_3)), " admin3,  ", length(levels(world_4$NAME_2)), " admin2, ", length(levels(world_4$NAME_1)), " admin1 and ", length(levels(world_4$NAME_0)), " admin0 regions.\n\n"))
 
@@ -186,8 +201,10 @@ The outputs are stored in `data/admin_*.csv`. The script also produces `data/wor
                           TYPE_5 = world_5$TYPE_5, 
                           ENGTYPE_5 = world_5$ENGTYPE_5)
     
-    write.csv(world_5, paste0(path, "world_5.csv"), row.names=FALSE)
-    write.csv(admin_5, paste0(path, "admin_5.csv"), row.names=FALSE)
+    write.csv(world_5, paste0(path, "world_5.csv"), row.names=FALSE, na="")
+    write.csv(admin_5, paste0(path, "admin_5.csv"), row.names=FALSE, na="")
+    write.csv(toASCII(admin_5), paste0(path, "admin_5_ascii.csv"), row.names=FALSE, na="")
+
     
     cat(paste0(length(levels(world_5$NAME_5)), " admin5 regions extracted from ", length(levels(world_5$NAME_4)), " admin4, ", length(levels(world_5$NAME_3)), " admin3,  ", length(levels(world_5$NAME_2)), " admin2, ", length(levels(world_5$NAME_1)), " admin1 and ", length(levels(world_5$NAME_0)), " admin0 regions.\n\n"))
 
