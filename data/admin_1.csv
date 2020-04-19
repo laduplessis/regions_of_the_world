@@ -679,7 +679,7 @@
 "CZE","CZE.13_1","Czech Republic","Ústecký","Kraj","Region"
 "CZE","CZE.14_1","Czech Republic","Zlínský","Kraj","Region"
 "DEU","DEU.1_1","Germany","Baden-Württemberg","Land","State"
-"DEU","DEU.2_1","Germany","Bayern","Freistaat",NA
+"DEU","DEU.2_1","Germany","Bayern","Freistaat",
 "DEU","DEU.3_1","Germany","Berlin","Land","State"
 "DEU","DEU.4_1","Germany","Brandenburg","Land","State"
 "DEU","DEU.5_1","Germany","Bremen","Freie Hansestadt","State"
@@ -1208,12 +1208,12 @@
 "IDN","IDN.31_1","Indonesia","Sumatera Selatan","Propinisi","Province"
 "IDN","IDN.32_1","Indonesia","Sumatera Utara","Propinisi","Province"
 "IDN","IDN.33_1","Indonesia","Yogyakarta","Propinisi","Province"
-"IMN","IMN.1_1","Isle of Man","Ayre","Sheading",NA
-"IMN","IMN.2_1","Isle of Man","Garff","Sheading",NA
-"IMN","IMN.3_1","Isle of Man","Glenfaba","Sheading",NA
-"IMN","IMN.4_1","Isle of Man","Michael","Sheading",NA
-"IMN","IMN.5_1","Isle of Man","Middle","Sheading",NA
-"IMN","IMN.6_1","Isle of Man","Rushen","Sheading",NA
+"IMN","IMN.1_1","Isle of Man","Ayre","Sheading",
+"IMN","IMN.2_1","Isle of Man","Garff","Sheading",
+"IMN","IMN.3_1","Isle of Man","Glenfaba","Sheading",
+"IMN","IMN.4_1","Isle of Man","Michael","Sheading",
+"IMN","IMN.5_1","Isle of Man","Middle","Sheading",
+"IMN","IMN.6_1","Isle of Man","Rushen","Sheading",
 "IND","IND.1_1","India","Andaman and Nicobar","Union Territor","Union Territory"
 "IND","IND.2_1","India","Andhra Pradesh","State","State"
 "IND","IND.3_1","India","Arunachal Pradesh","State","State"
@@ -2749,7 +2749,7 @@
 "SJM","SJM.2_1","Svalbard and Jan Mayen","Svalbard","Territory","Territory"
 "SLB","SLB.1_1","Solomon Islands","Central","Province","Province"
 "SLB","SLB.2_1","Solomon Islands","Choiseul","Province","Province"
-"SLB","SLB.3_1","Solomon Islands","Guadalcanal",NA,NA
+"SLB","SLB.3_1","Solomon Islands","Guadalcanal",,
 "SLB","SLB.4_1","Solomon Islands","Honiara","Capital Territory","Capital Territory"
 "SLB","SLB.5_1","Solomon Islands","Isabel","Province","Province"
 "SLB","SLB.6_1","Solomon Islands","Makira Ulawa","Province","Province"
@@ -3332,7 +3332,7 @@
 "UKR","UKR.27_1","Ukraine","Zhytomyr","Oblast'","Region"
 "UMI","UMI.1_1","United States Minor Outlying Islands","Baker","Island","Island"
 "UMI","UMI.2_1","United States Minor Outlying Islands","Howland","Island","Island"
-"UMI","UMI.3_1","United States Minor Outlying Islands","Jarvis island",NA,"Island"
+"UMI","UMI.3_1","United States Minor Outlying Islands","Jarvis island",,"Island"
 "UMI","UMI.4_1","United States Minor Outlying Islands","Johnston","Atoll","Atoll"
 "UMI","UMI.5_1","United States Minor Outlying Islands","Kingman Reef","Reef","Reef"
 "UMI","UMI.6_1","United States Minor Outlying Islands","Midway","Island|Atoll","Island|Atoll"
